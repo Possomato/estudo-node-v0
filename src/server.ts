@@ -1,5 +1,7 @@
 import express from 'express'
 
+import { categoryHandle } from './middlewares/categoryHandle'
+
 const app = express()
 const port = 8080
 
@@ -9,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('hello world 2')
 })
 
-app.post('/product', (req, res) => {
+app.post('/product', categoryHandle, (req, res) => {
   const product = (req.body)
 
   res.send(product)
